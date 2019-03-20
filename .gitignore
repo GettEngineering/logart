@@ -1,0 +1,6 @@
+/vendor
+.idea
+.vscode
+bin/*
+!bin/.gitkeep
+*.log
