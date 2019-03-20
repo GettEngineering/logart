@@ -1,2 +1,2 @@
 # logart
-Log with advanced formatting
+Log wrapper with advanced formatting
