@@ -1,6 +1,6 @@
 # logart 
 
-### _logs as an art:_
+### _"logs as an art"_
 
 This package includes:
 
