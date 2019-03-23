@@ -2,9 +2,15 @@
 
 ### _logs as an art:_
 
-[logart - log](./log)
+This package includes:
 
-[logart - logrus formatter](./formatters/logrus-formatter/)
+- nice wrapper for logrus [read more](./log)
 
-[logart - gorm formatter](./formatters/gorm-formatter/)
+- logrus formatter [read more](./formatters/logrus-formatter/)
 
+- gorm formatter [read more](./formatters/gorm-formatter/)
+
+Each one is fully independent and can be used separately. But to get
+the best possible experience try to use formatters together with the log.
+In addition, packages independence allows move from already used logging or/and
+formatting tools in very gradual way.
