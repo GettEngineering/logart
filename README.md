@@ -1,4 +1,5 @@
 # logart
-Log wrapper with advanced formatting
 
-test
+Logrus wrapper with advanced abilities and formatting
+
+
