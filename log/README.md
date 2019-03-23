@@ -8,6 +8,8 @@ logging easier by providing limited and simple set of logging options.
 On the other hand it gives an ability to define (by service owner or architect)
 the standard log output.
 
+-----
+
 #### Why `WithField/s` - log management systems
 
 Existing set of logging tools (e.g. logrus) allows programmers do the
@@ -52,6 +54,8 @@ a log message. This looks good:
 This is the reason current package doesn't support `Debug/Info/... + f`
 If you need ad some data to the log - use `WithField/s`.
 
+-----
+
 #### Why `WithField/s` - log formatter for human readable logs
 
 Sometimes we want read the logs without using log management systems.
@@ -64,7 +68,9 @@ Using `WithField/s` allows to log formatter do it's job much better.
 What does it mean? To more information please refer to `logrus-formatter`
 package.
 
-#### Why `WithField/s`
+-----
+
+#### Why `WithField/s` - more
 
 Logging can be seen as providing kind of context or state of current action.
 From the examples above we can see what happened: "action is done" and the
@@ -82,6 +88,8 @@ no "context".
 \* this is little abstract reason to use `WithField/s`, but there is a real
 usage - wip.
 
+-----
+
 #### Why not `WithField/s`
 
 If all the the data will be added "as field", log management systems will
@@ -90,6 +98,8 @@ This is not always necessary, for example we want have ability to fast search by
 "action", but we never searching by "user".
 
 In this case adding `...WithField("user", user)` is not desired.
+
+-----
 
 #### Summary
 
