@@ -1,8 +1,5 @@
 # logart
 
-
-## Intro
-
 This package allows a programmers with different skills and tastes make
 logging easier by providing limited and simple set of logging options.
 On the other hand it gives an ability to define (by service owner or architect)
@@ -140,10 +137,13 @@ logart.WithField("field1", "value1").WithError(err).Error("my log message")
 
 - `PrintAsFields []string` - see previous
 
-    Example:
+    For example, for these options:
+    ```
     PrintFieldsInsideMessage = true
     PrintAsFields = []string{"field2"}
+    ```
 
+    This log:
     ```
     logart.
       WithField("field1", "value1").
