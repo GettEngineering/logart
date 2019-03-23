@@ -41,7 +41,6 @@ func CustomFormated(formatOptions FormatOptions) GormLogger {
 }
 
 type FormatOptions struct {
-	LevelLen            int
 	SourceFilePathDepth int
 	DontShowDate        bool
 	LogLevelName        string
@@ -57,7 +56,6 @@ type FormatOptions struct {
 }
 
 var DefaultFormatOptions = FormatOptions{
-	LevelLen:            5,
 	SourceFilePathDepth: 3,
 	DontShowDate:        true,
 	LogLevelName:        "SQL",

@@ -29,14 +29,39 @@ type impl struct {
 This import should be done directly in package
 
 
+### Options
+
+- SourceFilePathDepth  `default = 3` - Show only last N parts of the source
+file path
+
+- DontShowDate         `default = true` - print only time. Generally, date is not needed
+in stage/dev environments.
+
+- LogLevelName         `default = "SQL"`
+
+- color options (see available colors [here](https://github.com/artiomgiza/go-color-256)):
+    - EnableColors         `default = true`
+    - TimeColor            `default = 23`
+    - DurationColor        `default = 23`
+    - LogLevelColor        `default = 23`
+    - RowsNoAffectedColor  `default = 23`
+    - RowsYesAffectedColor `default = 35`
+    - FilePathColor        `default = 23`
+    - QueryColor           `default = 60`
+
+
 ### Example:
 
-![alt text](https://github.com/gtforge/rex_common/blob/master/gorm_log/readme_files/example.png "Example")
-![alt text](https://github.com/gtforge/rex_common/blob/master/gorm_log/readme_files/example.png "Example")
-![alt text](https://github.com/gtforge/rex_common/blob/master/gorm_log/readme_files/example.png "Example")
+- Short and humble (as we are) formatted log (made by this formatter)
+
+![alt text](https://github.com/gtforge/rex_common/blob/master/gorm_log/readme_files/logart_gorm_formatter.png "Example")
+
+- Default (long and too colored) gorm formatted log:
+
+![alt text](https://github.com/gtforge/rex_common/blob/master/gorm_log/readme_files/default_gorm_formatter.png "Example")
 
 
-### What's going on:
+### Technical details (advanced reading):
 
 Currently gorm don't really has ability to change the log format.
 
