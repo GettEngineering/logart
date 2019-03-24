@@ -6,7 +6,9 @@ This package includes:
 
 - nice wrapper for logrus [read more](./log)
 
-- logrus formatter [read more](./formatters/logrus-formatter/)
+- logrus human readable formatter [read more](./formatters/logrus-human-formatter/)
+
+- logrus JSON formatter [read more](./formatters/logrus-json-formatter/)
 
 - gorm formatter [read more](./formatters/gorm-formatter/)
 

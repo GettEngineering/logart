@@ -7,7 +7,7 @@
 
 Default setup:
 ```
-logrusformatter.Set()
+Set()
 ```
 
 Custom setup:

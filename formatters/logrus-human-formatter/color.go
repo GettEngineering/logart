@@ -1,4 +1,4 @@
-package logrusformatter
+package logrushumanformatter
 
 import (
 	"strings"

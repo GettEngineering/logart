@@ -1,4 +1,4 @@
-package logrusformatter
+package logrushumanformatter
 
 type FormatOptions struct {
 	FormatterEnabled func() bool

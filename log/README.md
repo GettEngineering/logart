@@ -62,7 +62,7 @@ Is it became clear after pretty short time that reading white colored log on bla
 screen (or black on white) is not the most convenient way.
 It's much clearer to read colored and well shaped log.
 Using `WithField/s` allows to log formatter do it's job much better.
-What does it mean? To more information please refer to `logrus-formatter`
+What does it mean? To more information please refer to `logrus-human-formatter`
 package.
 
 -----
