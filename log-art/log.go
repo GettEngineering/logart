@@ -53,7 +53,6 @@ func Error(args ...interface{}) {
 
 // log builders /////////////////////////////////////////////////////////////////
 
-
 func (l log) WithField(key string, value interface{}) Logger {
 	l.fields[key] = fmt.Sprintf("%+v", value) // %+v print complex objects
 	return l
@@ -67,7 +66,7 @@ func (l log) WithFields(fields Fields) Logger {
 }
 
 func (l log) WithError(err error) Logger {
-	// if error is rex error
+	// if error is fields provider
 	if e, ok := err.(ErrorWithFields); ok {
 		// get error
 		err = e.GetError()

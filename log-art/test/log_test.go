@@ -2,16 +2,18 @@ package logtest
 
 import (
 	"fmt"
-	"github.com/gtforge/logart/formatters/logrus-formatter"
 	"strings"
 
+	"github.com/gtforge/logart/log-formatters/logrus-human-formatter"
+
+	"github.com/gtforge/logart/log-art"
+	"github.com/gtforge/logart/log-art/mock"
+
 	"github.com/golang/mock/gomock"
-	"github.com/gtforge/logart/log/mock"
 
 	"testing"
 	"time"
 
-	"github.com/gtforge/logart/log"
 	"github.com/sirupsen/logrus"
 
 	. "github.com/onsi/ginkgo"
@@ -23,27 +25,25 @@ func TestLog(t *testing.T) {
 	RunSpecs(t, "Log suit")
 }
 
-func Set4Gett() {
-	o := logrusformatter.DefaultFormatOptions
+func SetLogger() {
+	o := logrushumanformatter.DefaultFormatOptions
 
 	o.FormatterEnabled = func() bool {
 		return true
 	}
 
-	o.FirstEverPrintedFields = logrusformatter.OrderedFields{"field2"}
-	o.LastEverPrintedFields = logrusformatter.OrderedFields{"error"}
+	o.FirstEverPrintedFields = logrushumanformatter.OrderedFields{"field2"}
+	o.LastEverPrintedFields = logrushumanformatter.OrderedFields{"error"}
 	o.LogIDProvider = func() string {
 		return "xxxxxx"
 	}
 
-	co := logrusformatter.DefaultColorOptions
+	co := logrushumanformatter.DefaultColorOptions
 	co.OverrideLogColor = func(m string) (bool, int) {
 		return strings.HasPrefix(m, "curl "), 234 // should be almost black
 	}
-	//co.LevelInfoColor = 222
-	//co.ColorsEnabled = func() bool { return false }
 
-	logrusformatter.SetCustomized(o, co)
+	logrushumanformatter.SetCustomized(o, co)
 }
 
 var _ = Describe("OverrideLogColor usages", func() {
@@ -51,8 +51,7 @@ var _ = Describe("OverrideLogColor usages", func() {
 	BeforeEach(func() {
 		logrus.SetLevel(logrus.DebugLevel)
 
-		Set4Gett()
-		//logrus.SetFormatter(&gettOps.GettLogFormatter{})
+		SetLogger()
 
 		o := logart.DefaultLogOptions
 		o.PrintAsFields = []string{"error", "field1"}
@@ -141,9 +140,10 @@ var _ = Describe("OverrideLogColor usages", func() {
 		})
 
 		Context("when mock is off", func() {
-			// in case tests run not randomly - this part will ensure
-			// logart.UnMockLog() worked
-			// (in case of random tests run - it's not necessary)
+			// Note:
+			// In case tests are not run randomly - this part will ensure
+			// logart.UnMockLog() worked.
+			// In case of random tests run - it's not necessary
 
 			It("should use default log", func() {
 				// check we are back to regular (un-mocked) log
@@ -164,7 +164,5 @@ var _ = Describe("OverrideLogColor usages", func() {
 				logart.WithField("fat", fatValue).Debug("yey! no fat!")
 			})
 		})
-
 	})
 })
-

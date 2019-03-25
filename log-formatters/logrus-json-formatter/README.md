@@ -2,7 +2,7 @@
 
 
 JSON formatted log (log is printed as JSON):
-![alt text](https://github.com/gtforge/rex_common/blob/master/log_formatter/readme_files/json-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/logrus-json-formatter/readme_files/json-formatter.png "Example")
 
 ### Usage:
 

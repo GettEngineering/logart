@@ -1,6 +1,6 @@
 package logart
 
-//go:generate mockgen -source=./log/interface.go  -destination=./log/mock/logart_mock.go Logger
+//go:generate mockgen -source=./log-art/interface.go  -destination=./log-art/mock/logart_mock.go Logger
 type Logger interface {
 	WithField(key string, value interface{}) Logger
 	WithFields(fields Fields) Logger
