@@ -1,8 +1,6 @@
 package logrushumanformatter
 
 type FormatOptions struct {
-	FormatterEnabled func() bool
-
 	TimeLayout     string
 	LogLevelLength int
 	LogIDProvider  func() string
@@ -12,8 +10,6 @@ type FormatOptions struct {
 }
 
 var DefaultFormatOptions = FormatOptions{
-	FormatterEnabled: func() bool { return false },
-
 	TimeLayout:     "15:04:05.000", // could be with date: "2006-01-02 15:04:05.000"
 	LogLevelLength: 3,              // DEB / INF / WAR / ERR / ...
 	LogIDProvider:  func() string { return "" },

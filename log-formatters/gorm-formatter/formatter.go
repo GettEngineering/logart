@@ -46,6 +46,7 @@ type FormatOptions struct {
 	LogLevelName        string
 
 	EnableColors         bool
+	ErrorColor           int
 	TimeColor            int
 	DurationColor        int
 	LogLevelColor        int
@@ -61,6 +62,7 @@ var DefaultFormatOptions = FormatOptions{
 	LogLevelName:        "SQL",
 
 	EnableColors:         true,
+	ErrorColor:           196, // red
 	TimeColor:            23,
 	DurationColor:        23,
 	LogLevelColor:        23,
@@ -117,13 +119,24 @@ func prepareLog(data logData, formatOptions FormatOptions) logData {
 			rowsAffectedColor = formatOptions.RowsYesAffectedColor
 		}
 
+		timeColor := formatOptions.TimeColor
+		durationColor := formatOptions.DurationColor
+		logLevelColor := formatOptions.LogLevelColor
+		queryColor := formatOptions.QueryColor
+		if res.error != nil {
+			timeColor = formatOptions.ErrorColor
+			durationColor = formatOptions.ErrorColor
+			logLevelColor = formatOptions.ErrorColor
+			queryColor = formatOptions.ErrorColor
+		}
+
 		res = logData{
-			time:           color.AddColor(res.time, formatOptions.TimeColor),
-			duration:       color.AddColor(res.duration, formatOptions.DurationColor),
-			logLevel:       color.AddColor(res.logLevel, formatOptions.LogLevelColor),
+			time:           color.AddColor(res.time, timeColor),
+			duration:       color.AddColor(res.duration, durationColor),
+			logLevel:       color.AddColor(res.logLevel, logLevelColor),
 			rowsAffected:   color.AddColor(res.rowsAffected, rowsAffectedColor),
 			sourceFilePath: color.AddColor(res.sourceFilePath, formatOptions.FilePathColor),
-			query:          color.AddColor(res.query, formatOptions.QueryColor),
+			query:          color.AddColor(res.query, queryColor),
 		}
 	}
 
@@ -143,13 +156,13 @@ func sourceFilePathPart(sourceFilePath string) string {
 func getByRegex(val interface{}, r string) string {
 	raw, ok := val.(string)
 	if !ok {
-		raw = fmt.Sprintf("%v", val) // will not happen
+		return fmt.Sprintf("%v", val)
 	}
 
 	re := regexp.MustCompile(r)
 	match := re.FindStringSubmatch(raw)
-	if match == nil {
-		match = []string{raw} // will not happen
+	if match == nil || len(match) < 2 {
+		return raw
 	}
 	return match[1]
 }
@@ -181,11 +194,19 @@ func retrieveData(formatOptions FormatOptions, values ...interface{}) (knownForm
 	// 	   " \n\x1b[36;31m[0 rowsAffected affected or returned ]\x1b[0m ",
 	//  }
 
+	// OR
+
+	//[]interface {}{
+	//	"\x1b[35m(/Users/gizatullinartiom/go/src/github.com/gtforge/global_ride_management_service/pkg/partition_manager/partition_manager_dao.go:55)\x1b[0m",
+	//	"\n\x1b[33m[2019-03-25 17:46:16]\x1b[0m",
+	//	"\x1b[31;1m",
+	//	&pq.Error{...},
+	//	"\x1b[0m",
+	//}
+
 	if len(vals) != 5 {
 		return false, logData{}
 	}
-
-	// Read interesting parts from given (see above) values:
 
 	// last N parts of the file path. For N=3: xxx(/a1/a2/a3/a4/a5/a6/file.go)xxx -> "a5/a6/file.go"
 	path := getByRegex(vals[0], fmt.Sprintf("((\\/(\\w|\\.|\\-)+){%v}\\.go:\\d+)", formatOptions.SourceFilePathDepth))
@@ -198,26 +219,47 @@ func retrieveData(formatOptions FormatOptions, values ...interface{}) (knownForm
 		time = getByRegex(vals[1], "(\\d{4}-\\d{2}-\\d{2}.\\d{2}:\\d{2}:\\d{2})")
 	}
 
-	// duration as is without surroundings
-	duration := getByRegex(vals[2], "\\[(\\d+\\.\\d*\\w+)\\]")
+	if err, ok := vals[3].(error); ok {
 
-	// query as is:
-	query := vals[3].(string)
+		return true, logData{
+			error: err,
 
-	// only number of affected rows: xxx[777 rowsAffected affected or returned]xxx -> "777"
-	rowsAffected := getByRegex(vals[4], "(\\d+)\\srows affected")
+			time:           time,
+			logLevel:       formatOptions.LogLevelName,
+			rowsAffected:   "0",
+			sourceFilePath: path,
+			query:          fmt.Sprint(err),
+		}
 
-	return true, logData{
-		time:           time,
-		duration:       duration,
-		logLevel:       formatOptions.LogLevelName,
-		rowsAffected:   rowsAffected,
-		sourceFilePath: path,
-		query:          query,
+	} else {
+		// duration as is without surroundings
+		duration := getByRegex(vals[2], "\\[(\\d+\\.\\d*\\w+)\\]")
+
+		// query as is:
+		query, ok := vals[3].(string)
+		if !ok {
+			query = fmt.Sprint(vals[3])
+		}
+
+		// only number of affected rows: xxx[777 rowsAffected affected or returned]xxx -> "777"
+		rowsAffected := getByRegex(vals[4], "(\\d+)\\srows affected")
+
+		return true, logData{
+			error: nil,
+
+			time:           time,
+			duration:       duration,
+			logLevel:       formatOptions.LogLevelName,
+			rowsAffected:   rowsAffected,
+			sourceFilePath: path,
+			query:          query,
+		}
 	}
 }
 
 type logData struct {
+	error error
+
 	time           string
 	duration       string
 	logLevel       string

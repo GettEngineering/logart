@@ -15,13 +15,21 @@ func Set() {
 	})
 }
 
+func SetWithLogIDProvider(logIDProvider func() string) {
+	formatOptions := DefaultFormatOptions
+	formatOptions.LogIDProvider = logIDProvider
+
+	logrus.SetFormatter(formatter{
+		formatOptions: formatOptions,
+		colorOptions:  DefaultColorOptions,
+	})
+}
+
 func SetCustomized(formatOptions FormatOptions, colorOptions ColorOptions) {
-	if formatOptions.FormatterEnabled() {
-		logrus.SetFormatter(formatter{
-			formatOptions: formatOptions,
-			colorOptions:  colorOptions,
-		})
-	}
+	logrus.SetFormatter(formatter{
+		formatOptions: formatOptions,
+		colorOptions:  colorOptions,
+	})
 }
 
 func (f formatter) Format(entry *logrus.Entry) ([]byte, error) {

@@ -28,10 +28,6 @@ func TestLog(t *testing.T) {
 func SetLogger() {
 	o := logrushumanformatter.DefaultFormatOptions
 
-	o.FormatterEnabled = func() bool {
-		return true
-	}
-
 	o.FirstEverPrintedFields = logrushumanformatter.OrderedFields{"field2"}
 	o.LastEverPrintedFields = logrushumanformatter.OrderedFields{"error"}
 	o.LogIDProvider = func() string {

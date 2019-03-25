@@ -9,8 +9,18 @@
 
 Default setup:
 ```
-Set()
+logrushumanformatter.Set()
 ```
+
+Default setup:
+```
+logrushumanformatter.SetWithLogIDProvider(logIDProvider)
+
+// when logIDProvider is a function with no input params and string output
+// and should provide kind of sessionID (unique number per running scope)
+```
+
+
 
 Custom setup:
 ```
@@ -28,13 +38,6 @@ SetCustomized(formatOptions, colorOptions)
 ```
 
 Format options allow flexible output configuration:
-
-- FormatterEnabled - `default = false`.
-Actually this is a function that return boolean. This function allows
-dynamic formatter enabling/disabling. Useful to differentiate between prod
-and dev/stage environments. Most likely the formatter will be enabled on
-dev/stage (output is the terminal window - we want nice formatted log) and
-disabled on prod (log management systems)
 
 - TimeLayout - `default = 15:04:05.000` (no date, time with ms).
 Also could be set with date: "2006-01-02 15:04:05.000". This is the time
@@ -100,6 +103,13 @@ The log line will exist, but it will be "hidden" for human eye.
 can run short bash script ([same link](https://github.com/artiomgiza/go-color-256))
 in the checked terminal to see how each color looks on it.
 
+### Note
+
+For most of the usages in real life, it can be useful to differentiate between prod
+and dev/stage environments. Most likely this formatter will be enabled on
+dev/stage (output is the terminal window - we want nice formatted log) and
+disabled on prod (log management systems). Of course on prod env we'll use
+another type of formatter, such as json formatter ([like this one](https://github.com/gtforge/logart/tree/master/log-formatters/logrus-json-formatter))
 
 ### Comparison:
 
