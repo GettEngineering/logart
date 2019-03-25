@@ -111,6 +111,7 @@ func prepareLog(data logData, formatOptions FormatOptions) logData {
 		rowsAffected:   affectedRowsPart(data.rowsAffected),
 		sourceFilePath: sourceFilePathPart(data.sourceFilePath),
 		query:          data.query,
+		error:          data.error,
 	}
 
 	if formatOptions.EnableColors {
@@ -220,46 +221,43 @@ func retrieveData(formatOptions FormatOptions, values ...interface{}) (knownForm
 	}
 
 	if err, ok := vals[3].(error); ok {
-
 		return true, logData{
-			error: err,
-
+			error:          err,
+			duration:       "FAILED",
 			time:           time,
 			logLevel:       formatOptions.LogLevelName,
 			rowsAffected:   "0",
 			sourceFilePath: path,
 			query:          fmt.Sprint(err),
 		}
-
-	} else {
-		// duration as is without surroundings
-		duration := getByRegex(vals[2], "\\[(\\d+\\.\\d*\\w+)\\]")
-
-		// query as is:
-		query, ok := vals[3].(string)
-		if !ok {
-			query = fmt.Sprint(vals[3])
-		}
-
-		// only number of affected rows: xxx[777 rowsAffected affected or returned]xxx -> "777"
-		rowsAffected := getByRegex(vals[4], "(\\d+)\\srows affected")
-
-		return true, logData{
-			error: nil,
-
-			time:           time,
-			duration:       duration,
-			logLevel:       formatOptions.LogLevelName,
-			rowsAffected:   rowsAffected,
-			sourceFilePath: path,
-			query:          query,
-		}
 	}
+
+	// duration as is without surroundings
+	duration := getByRegex(vals[2], "\\[(\\d+\\.\\d*\\w+)\\]")
+
+	// query as is:
+	query, ok := vals[3].(string)
+	if !ok {
+		query = fmt.Sprint(vals[3])
+	}
+
+	// only number of affected rows: xxx[777 rowsAffected affected or returned]xxx -> "777"
+	rowsAffected := getByRegex(vals[4], "(\\d+)\\srows affected")
+
+	return true, logData{
+		error:          nil,
+		time:           time,
+		duration:       duration,
+		logLevel:       formatOptions.LogLevelName,
+		rowsAffected:   rowsAffected,
+		sourceFilePath: path,
+		query:          query,
+	}
+
 }
 
 type logData struct {
-	error error
-
+	error          error // used to determine failure in query execution
 	time           string
 	duration       string
 	logLevel       string

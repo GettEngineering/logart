@@ -73,7 +73,11 @@ func logLevel(e *logrus.Entry, o FormatOptions) string {
 }
 
 func logID(_ *logrus.Entry, o FormatOptions) string {
-	return o.LogIDProvider()
+	id := o.LogIDProvider()
+	if len(id) <= o.LogIDLength {
+		return id
+	}
+	return id[:o.LogIDLength]
 }
 
 func logMsg(e *logrus.Entry, o FormatOptions) string {

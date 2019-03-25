@@ -3,6 +3,7 @@ package logrushumanformatter
 type FormatOptions struct {
 	TimeLayout     string
 	LogLevelLength int
+	LogIDLength    int
 	LogIDProvider  func() string
 
 	FirstEverPrintedFields OrderedFields
@@ -12,6 +13,7 @@ type FormatOptions struct {
 var DefaultFormatOptions = FormatOptions{
 	TimeLayout:     "15:04:05.000", // could be with date: "2006-01-02 15:04:05.000"
 	LogLevelLength: 3,              // DEB / INF / WAR / ERR / ...
+	LogIDLength:    8,
 	LogIDProvider:  func() string { return "" },
 
 	FirstEverPrintedFields: OrderedFields{},
