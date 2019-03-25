@@ -1,7 +1,7 @@
 # logrus formatter
 
 
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/logrus-human-formatter/readme_files/formatted.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/formatted.png "Example")
 
 ### Usage:
 
@@ -105,10 +105,10 @@ Here is couple of possible options to format the log. **Same** log is shown
 in three different ways:
 
 Colorized log (made by this formatter):
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/logrus-human-formatter/readme_files/formatted.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/formatted.png "Example")
 
 Default log (logrus default):
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/logrus-human-formatter/readme_files/default-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/default-formatter.png "Example")
 
 JSON formatted log (log is printed as JSON):
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/logrus-human-formatter/readme_files/json-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/json-formatter.png "Example")

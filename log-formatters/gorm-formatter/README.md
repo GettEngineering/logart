@@ -54,11 +54,11 @@ in stage/dev environments.
 
 - Short and humble (as we are) formatted log (made by this formatter)
 
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/gorm-formatter/readme_files/logart_gorm_formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/gorm-formatter/readme_files/logart_gorm_formatter.png "Example")
 
 - Default (long and too colored) gorm formatted log:
 
-![alt text](https://github.com/gtforge/logart/blob/master/log_formatters/gorm-formatter/readme_files/default_gorm_formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/gorm-formatter/readme_files/default_gorm_formatter.png "Example")
 
 
 ### Technical details (advanced reading):

@@ -6,11 +6,11 @@ This package includes:
 
 - nice wrapper for logrus [read more](./log-art)
 
-- logrus human readable formatter [read more](./formatters/logrus-human-formatter/)
+- logrus human readable formatter [read more](./log-formatters/logrus-human-formatter/)
 
-- logrus JSON formatter [read more](./formatters/logrus-json-formatter/)
+- logrus JSON formatter [read more](./log-formatters/logrus-json-formatter/)
 
-- gorm formatter [read more](./formatters/gorm-formatter/)
+- gorm formatter [read more](./log-formatters/gorm-formatter/)
 
 - errors handling package [read more](./err-art)
 
