@@ -7,13 +7,15 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-type GettLogFormatter struct{}
+type JsonLogFormatter struct {
+	formatOptions FormatOptions
+}
 
-func (f *GettLogFormatter) Format(entry *logrus.Entry) ([]byte, error) {
+func (f *JsonLogFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	data := make(map[string]interface{}, len(entry.Data)+4)
 	data["level"] = entry.Level.String()
-	data["time"] = entry.Time.UTC().Format(options.TimestampFormat)
-	data["request_id"] = options.LogIDProvider()
+	data["time"] = entry.Time.UTC().Format(f.formatOptions.TimestampFormat)
+	data["request_id"] = f.formatOptions.LogIDProvider()
 
 	for k, v := range entry.Data {
 		switch v := v.(type) {

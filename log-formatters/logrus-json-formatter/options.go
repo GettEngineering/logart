@@ -1,16 +1,22 @@
 package logrusjsonformatter
 
-import "time"
+import (
+	"time"
+
+	"github.com/sirupsen/logrus"
+)
 
 func Set() {
-	options = DefaultFormatOptions
+	logrus.SetFormatter(&JsonLogFormatter{
+		formatOptions: DefaultFormatOptions,
+	})
 }
 
-func SetCustomized(o FormatOptions) {
-	options = o
+func SetCustomized(options FormatOptions) {
+	logrus.SetFormatter(&JsonLogFormatter{
+		formatOptions: options,
+	})
 }
-
-var options = DefaultFormatOptions
 
 type FormatOptions struct {
 	TimestampFormat string

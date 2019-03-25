@@ -1,4 +1,4 @@
-package gormlog
+package gormlogformatter
 
 import (
 	"fmt"
@@ -13,13 +13,13 @@ import (
 // Usage //////////////////////////////////////////////////
 //
 // Default:
-// ...DB.SetLogger(gormlog.DefaultFormated())
+// ...DB.SetLogger(gormlog.DefaultFormatter())
 //
 // Custom:
 // o := DefaultFormatOptions
 // o.LogLevelColor = 123
 // o.DontShowDate = false
-// ...DB.SetLogger(gormlog.CustomFormated(o))
+// ...DB.SetLogger(gormlog.CustomFormatter(o))
 //
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
@@ -28,13 +28,13 @@ type GormLogger interface {
 	Print(v ...interface{})
 }
 
-func DefaultFormated() GormLogger {
+func DefaultFormatter() GormLogger {
 	return gormLog{
 		formatOptions: DefaultFormatOptions,
 	}
 }
 
-func CustomFormated(formatOptions FormatOptions) GormLogger {
+func CustomFormatter(formatOptions FormatOptions) GormLogger {
 	return gormLog{
 		formatOptions: formatOptions,
 	}

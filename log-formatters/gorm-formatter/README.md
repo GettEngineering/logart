@@ -4,15 +4,18 @@
 ### Usage:
 
 
+`go get github.com/gtforge/logart/log-formatters/gorm-formatter`
+
+
 ```
 // Default:
-gorm.DB.SetLogger(gormlog.DefaultFormated())
+gorm.DB.SetLogger(gormlogformatter.DefaultFormatter())
 
 // Custom:
-o := DefaultFormatOptions
+o := gormlogformatter.DefaultFormatOptions
 o.LogLevelColor = 123
 o.DontShowDate = false
-gorm.DB.SetLogger(gormlog.CustomFormated(o))
+gorm.DB.SetLogger(gormlogformatter.CustomFormater(o))
 ```
 
 
@@ -66,7 +69,7 @@ in stage/dev environments.
 Currently gorm don't really has ability to change the log format.
 
 We only can replace logger (struct that implements `Print(values ...interface{})`)
-After logger is replaced (by calling: `gettStorages.DB.SetLogger(...)`)
+After logger is replaced (by calling: `myStorages.DB.SetLogger(...)`)
 Each time, gorm log is printed, the  Print(values...) is called.
 
 The question is what are these `values`?
@@ -75,7 +78,7 @@ When SQL log is printed values are:
 ```
 []interface {}{
     "sql",
-    "/Users/gizatullinartiom/go/src/.../services_common_go/gett-settings/settings.go:181",
+    "/Users/gizatullinartiom/go/src/.../services_common/settings/settings.go:181",
     954153,
     "SELECT * FROM \"table_name\" WHERE $1 > 0",
     []interface {}{"field_name"},
@@ -102,7 +105,7 @@ vals := gorm.LogFormatter(values...)
 These `vals` look like this:
 ```
 []interface {}{
-    "\x1b[35m(/Users/gizatullinartiom/go/src/.../services_common_go/gett-settings/settings.go:181)\x1b[0m",
+    "\x1b[35m(/Users/gizatullinartiom/go/src/.../services_common/settings/settings.go:181)\x1b[0m",
     "\n\x1b[33m[2019-02-26 00:19:25]\x1b[0m",
     " \x1b[36;1m[2.70ms]\x1b[0m ",
     "SELECT * FROM \"table_name\" WHERE 'field_name' > 0 ",

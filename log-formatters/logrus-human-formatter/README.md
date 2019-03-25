@@ -5,6 +5,8 @@
 
 ### Usage:
 
+`go get github.com/gtforge/logart/log-formatters/logrus-human-formatter`
+
 Default setup:
 ```
 Set()

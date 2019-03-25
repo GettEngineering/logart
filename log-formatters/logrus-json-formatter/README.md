@@ -6,19 +6,21 @@ JSON formatted log (log is printed as JSON):
 
 ### Usage:
 
+`go get github.com/gtforge/logart/log-formatters/logrus-json-formatter`
+
 Default setup:
 ```
-Set()
+logrusjsonformatter.Set()
 ```
 
 Custom setup:
 ```
-formatOptions := DefaultFormatOptions
+formatOptions := logrusjsonformatter.DefaultFormatOptions
 formatOptions.Option1 = customValue1
 formatOptions.Option2 = customValue2
 ...
 
-SetCustomized(formatOptions)
+logrusjsonformatter.SetCustomized(formatOptions)
 ```
 
 Format options allow flexible output configurations:
