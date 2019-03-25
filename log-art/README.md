@@ -1,4 +1,5 @@
-# logart
+# logart - WIP
+
 
 This package allows a programmers with different skills and tastes make
 logging easier by providing limited and simple set of logging options.

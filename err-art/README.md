@@ -1,4 +1,4 @@
-# errArt
+# errArt - WIP
 
 *error handling as an art*
 

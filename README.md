@@ -4,7 +4,6 @@
 
 This package includes:
 
-- nice wrapper for logrus [read more](./log-art)
 
 - logrus human readable formatter [read more](./log-formatters/logrus-human-formatter/)
 
@@ -12,6 +11,8 @@ This package includes:
 
 - gorm formatter [read more](./log-formatters/gorm-formatter/)
 
+WIP:
+- nice wrapper for logrus [read more](./log-art)
 - errors handling package [read more](./err-art)
 
 Each one is fully independent and can be used separately. But to get
