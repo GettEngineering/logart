@@ -13,13 +13,13 @@ import (
 // Usage //////////////////////////////////////////////////
 //
 // Default:
-// ...DB.SetLogger(gormlog.DefaultFormatter())
+// ...DB.SetLogger(gormlog.DefaultLogger())
 //
 // Custom:
 // o := DefaultFormatOptions
 // o.LogLevelColor = 123
 // o.DontShowDate = false
-// ...DB.SetLogger(gormlog.CustomFormatter(o))
+// ...DB.SetLogger(gormlog.CustomLogger(o))
 //
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
@@ -28,13 +28,13 @@ type GormLogger interface {
 	Print(v ...interface{})
 }
 
-func DefaultFormatter() GormLogger {
+func DefaultLogger() GormLogger {
 	return gormLog{
 		formatOptions: DefaultFormatOptions,
 	}
 }
 
-func CustomFormatter(formatOptions FormatOptions) GormLogger {
+func CustomLogger(formatOptions FormatOptions) GormLogger {
 	return gormLog{
 		formatOptions: formatOptions,
 	}
