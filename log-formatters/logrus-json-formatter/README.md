@@ -35,5 +35,5 @@ current "RequestID" or "SessionID" - depends infra code is running in.
 JSON formatter is good for log managements systems.
 
 To make the log more "human readable" (for example in dev/stage environments)
-another formatter should be used, see [human readable formatter](./log-formatters/logrus-human-formatter/)
+another formatter should be used, see [human readable formatter](../log-formatters/logrus-human-formatter/)
 for more info.
