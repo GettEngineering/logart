@@ -29,7 +29,11 @@ type impl struct {
     db *gorm.DB
 }
 ```
-This import should be done directly in package
+This import:
+```
+_ "github.com/gtforge/logart/log-formatters/gorm-formatter/automatic-setter"
+```
+should be done directly in package
 
 
 ### Options
