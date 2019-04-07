@@ -4,7 +4,7 @@
 ### Usage:
 
 
-`go get github.com/gtforge/logart/log-formatters/gorm-formatter`
+`go get github.com/gtforge/logart/gorm-formatter`
 
 
 ```
@@ -31,7 +31,7 @@ type impl struct {
 ```
 This import:
 ```
-_ "github.com/gtforge/logart/log-formatters/gorm-formatter/automatic-setter"
+_ "github.com/gtforge/logart/gorm-formatter/automatic-setter"
 ```
 should be done directly in package
 
@@ -61,11 +61,11 @@ in stage/dev environments.
 
 - Short and humble (as we are) formatted log (made by this formatter)
 
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/gorm-formatter/readme_files/logart_gorm_formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/gorm-formatter/readme_files/logart_gorm_formatter.png "Example")
 
 - Default (long and too colored) gorm formatted log:
 
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/gorm-formatter/readme_files/default_gorm_formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/gorm-formatter/readme_files/default_gorm_formatter.png "Example")
 
 
 ### Technical details (advanced reading):

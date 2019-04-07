@@ -2,11 +2,11 @@
 
 
 JSON formatted log (log is printed as JSON):
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-json-formatter/readme_files/json-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/logrus-json-formatter/readme_files/json-formatter.png "Example")
 
 ### Usage:
 
-`go get github.com/gtforge/logart/log-formatters/logrus-json-formatter`
+`go get github.com/gtforge/logart/logrus-json-formatter`
 
 Default setup:
 ```
@@ -37,5 +37,5 @@ current "RequestID" or "SessionID" - depends infra code is running in.
 JSON formatter is good for log managements systems.
 
 To make the log more "human readable" (for example in dev/stage environments)
-another formatter should be used, see [human readable formatter](https://github.com/gtforge/logart/tree/master/log-formatters/logrus-human-formatter)
+another formatter should be used, see [human readable formatter](https://github.com/gtforge/logart/tree/master/logrus-human-formatter)
 for more info.

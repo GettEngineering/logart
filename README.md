@@ -5,15 +5,11 @@
 This package includes:
 
 
-- logrus human readable formatter [read more](./log-formatters/logrus-human-formatter/)
+- logrus human readable formatter [read more](./logrus-human-formatter/)
 
-- logrus JSON formatter [read more](./log-formatters/logrus-json-formatter/)
+- logrus JSON formatter [read more](./logrus-json-formatter/)
 
-- gorm formatter [read more](./log-formatters/gorm-formatter/)
-
-WIP:
-- nice wrapper for logrus [read more](./log-art)
-- errors handling package [read more](./err-art)
+- gorm formatter [read more](./gorm-formatter/)
 
 Each one is fully independent and can be used separately. But to get
 the best possible experience try to use log-formatters together with the log.

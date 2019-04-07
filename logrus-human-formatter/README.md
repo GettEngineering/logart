@@ -1,11 +1,11 @@
 # logrus formatter
 
 
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/formatted.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/logrus-human-formatter/readme_files/formatted.png "Example")
 
 ### Usage:
 
-`go get github.com/gtforge/logart/log-formatters/logrus-human-formatter`
+`go get github.com/gtforge/logart/logrus-human-formatter`
 
 Default setup:
 ```
@@ -109,7 +109,7 @@ For most of the usages in real life, it can be useful to differentiate between p
 and dev/stage environments. Most likely this formatter will be enabled on
 dev/stage (output is the terminal window - we want nice formatted log) and
 disabled on prod (log management systems). Of course on prod env we'll use
-another type of formatter, such as json formatter ([like this one](https://github.com/gtforge/logart/tree/master/log-formatters/logrus-json-formatter))
+another type of formatter, such as json formatter ([like this one](https://github.com/gtforge/logart/tree/master/logrus-json-formatter))
 
 ### Comparison:
 
@@ -117,10 +117,10 @@ Here is couple of possible options to format the log. **Same** log is shown
 in three different ways:
 
 Colorized log (made by this formatter):
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/formatted.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/logrus-human-formatter/readme_files/formatted.png "Example")
 
 Default log (logrus default):
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/default-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/logrus-human-formatter/readme_files/default-formatter.png "Example")
 
 JSON formatted log (log is printed as JSON):
-![alt text](https://github.com/gtforge/logart/blob/master/log-formatters/logrus-human-formatter/readme_files/json-formatter.png "Example")
+![alt text](https://github.com/gtforge/logart/blob/master/logrus-human-formatter/readme_files/json-formatter.png "Example")
