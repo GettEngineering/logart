@@ -198,7 +198,7 @@ func retrieveData(formatOptions FormatOptions, values ...interface{}) (knownForm
 	// OR
 
 	//[]interface {}{
-	//	"\x1b[35m(/Users/gizatullinartiom/go/src/github.com/gtforge/global_ride_management_service/pkg/partition_manager/partition_manager_dao.go:55)\x1b[0m",
+	//	"\x1b[35m(/Users/user/go/src/github.com/repo_name/lib/partition_manager_dao.go:55)\x1b[0m",
 	//	"\n\x1b[33m[2019-03-25 17:46:16]\x1b[0m",
 	//	"\x1b[31;1m",
 	//	&pq.Error{...},

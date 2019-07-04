@@ -1,10 +1,8 @@
 package automaticsetter
 
-import (
-	"github.com/gtforge/logart/gorm-formatter"
-	"github.com/gtforge/services_common_go/gett-storages"
-)
-
 func init() {
-	gettStorages.DB.SetLogger(gormlogformatter.DefaultLogger())
+	// Once DB client reference is cloned, you might use this to
+	// enable log formatter:
+	//
+	// your.db.client.set.logger(gormlogformatter.DefaultLogger())
 }
